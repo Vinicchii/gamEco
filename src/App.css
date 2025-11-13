@@ -1,38 +1,123 @@
-.App {
-  text-align: center;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Importar fontes retrô */
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+/* Estilos base retrô */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html,
+body {
+  background-color: #f0fdf4;
+  color: #1f2937;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* Classe para fonte retrô pixelada */
+.pixelated {
+  font-family: "Press Start 2P", cursive;
+  letter-spacing: 0.1em;
+  text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
+}
+
+/* Animações retrô */
+@keyframes pixelated-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+@keyframes color-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
 }
 
-.App-link {
-  color: #61dafb;
+@keyframes glitch {
+  0% {
+    text-shadow: 3px 0px 0px #ff006e, -3px -3px 0px #00d4ff;
+  }
+  50% {
+    text-shadow: -3px 0px 0px #00d4ff, 3px 3px 0px #ff006e;
+  }
+  100% {
+    text-shadow: 3px 0px 0px #ff006e, -3px -3px 0px #00d4ff;
+  }
 }
 
-@keyframes App-logo-spin {
+/* Botões com estilo retrô */
+button {
+  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  position: relative;
+}
+
+button:active {
+  transform: translate(2px, 2px);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Efeito de sombra retrô */
+.shadow-retro {
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.3);
+}
+
+/* Cores ecológicas */
+.eco-green {
+  background-color: #16a34a;
+}
+
+.eco-light-green {
+  background-color: #dcfce7;
+}
+
+/* Responsividade melhorada */
+@media (max-width: 640px) {
+  .pixelated {
+    font-size: 1.5rem;
+  }
+
+  h1 {
+    font-size: 2rem !important;
+  }
+
+  h2 {
+    font-size: 1.5rem !important;
+  }
+}
+
+/* Scroll behavior suave */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Animação de entrada */
+@keyframes fadeInDown {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(-30px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
   }
+}
+
+.fade-in-down {
+  animation: fadeInDown 0.6s ease-out;
 }
