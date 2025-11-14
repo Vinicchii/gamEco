@@ -11,6 +11,7 @@ const Game = () => {
   const [gameOver, setGameOver] = useState(false);
   const [feedback, setFeedback] = useState(null);
   const [isAnswering, setIsAnswering] = useState(false);
+  const [gameStarted, setGameStarted] = useState(false);
 
   const question = gameQuestions[currentQuestion];
 
@@ -51,7 +52,43 @@ const Game = () => {
     setGameOver(false);
     setFeedback(null);
     setIsAnswering(false);
+    setGameStarted(false);
   };
+
+  const startGame = () => {
+    setGameStarted(true);
+  };
+
+  if (!gameStarted) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-green-50 to-green-100 p-4 flex flex-col items-center justify-center">
+        <div className="w-full max-w-2xl">
+          <h1 className="text-6xl font-black text-center text-green-700 mb-8 pixelated drop-shadow-lg">
+            GamEco
+          </h1>
+
+          <div className="bg-white rounded-lg shadow-lg p-8 border-4 border-green-700 text-center">
+            <p className="text-2xl font-bold text-gray-800 mb-6">
+              Bem-vindo ao GamEco!
+            </p>
+            
+            <p className="text-gray-600 text-lg mb-8 leading-relaxed">
+              Um jogo desenvolvido para ensinar sobre a forma correta de descarte, afim de promover a reciclagem e a preservação do meio ambiente.
+            </p>
+
+            <button
+              onClick={startGame}
+              className="bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-8 rounded-lg text-2xl transition-all duration-200 transform hover:scale-105 active:scale-95 shadow-lg"
+            >
+              S T A R T
+            </button>
+          </div>
+        </div>
+
+        <Footer />
+      </div>
+    );
+  }
 
   if (gameOver) {
     return (

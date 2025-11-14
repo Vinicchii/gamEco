@@ -138,7 +138,7 @@ export const trashBins = [
   },
   {
     color: "gray",
-    name: "Orgânico",
+    name: "Comum",
     bgColor: "bg-gray-700",
     hoverColor: "hover:bg-gray-800",
     borderColor: "border-gray-700",
